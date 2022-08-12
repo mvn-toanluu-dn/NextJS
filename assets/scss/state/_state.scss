@@ -1,0 +1,34 @@
+.is-hidden {
+  display: none;
+}
+.section-sub-title {
+  @include pxRem(font-size, 17);
+  @include pxRem(line-height, 24);
+  @include pxRem(letter-spacing, 0.6);
+  font-style: "Lora";
+  font-weight: map-get($font-weight, thin);
+  color: map-get($colors, section-sub-title);
+}
+.section-title {
+  @include pxRem(font-size, 35);
+  @include pxRem(margin-top, 10);
+  @include pxRem(line-height, 20);
+  @include pxRem(padding-bottom, 20);
+  @include pxRem(margin-bottom, 25);
+  position: relative;
+  color: map-get($colors, section-title);
+  &::after {
+    content: '';
+    background-color: map-get($colors, green );
+    position: absolute;
+    width: 40px;
+    height: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
+}
+.section-sub-title,
+.section-title {
+  text-align: center;
+}

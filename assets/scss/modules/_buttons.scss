@@ -1,0 +1,31 @@
+.btn {
+  @include pxRem(padding, 8 16);
+  @include pxRem(height, 40);
+  color: map-get($colors, white);
+  background-color: map-get($colors, green);
+  font-family: $font-body;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 400ms ease;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @include pxRem(font-size, 11);
+  @include pxRem(letter-spacing, 1.5);
+  justify-content: flex-start;
+  text-transform: uppercase;
+  &:hover {
+    background-color: map-get($colors, hover-green);
+  }
+  &:focus {
+    outline: none;
+  }
+  &.disabled,
+  &:disabled {
+    pointer-events: none;
+    color: map-get($colors, txt-disabled);
+    border-color: map-get($colors, txt-disabled);
+    background: map-get($colors, bg-gray-light);
+  }
+}
