@@ -1,0 +1,28 @@
+[
+    {
+      "id": "1",
+      "image": "https://i0.wp.com/demo4.drfuri.com/razzi11/wp-content/uploads/sites/30/2020/12/el8002.jpg?resize=570%2C684&ssl=1",
+      "productName": "Beats Solo 3 Wireless",
+      "normalPrice": 65.45
+    },
+    {
+      "id": "2",
+      "image": "https://i0.wp.com/demo4.drfuri.com/razzi11/wp-content/uploads/sites/30/2020/12/el0001.jpg?resize=570%2C684&ssl=1",
+      "productName": "iPhone 13 Mini, SIM Free",
+      "normalPrice": 36.85
+    },
+    {
+      "id": "3",
+      "image": "https://i0.wp.com/demo4.drfuri.com/razzi11/wp-content/uploads/sites/30/2020/12/el9001.jpg?resize=570%2C684&ssl=1",
+      "productName": "Canon EOS 2000D Digital SLR",
+      "normalPrice": 56.87,
+      "salePrice": 32.5
+    },
+    {
+      "id": "4",
+      "image": "https://i0.wp.com/demo4.drfuri.com/razzi11/wp-content/uploads/sites/30/2020/12/el4001.jpg?resize=570%2C684&ssl=1",
+      "productName": "Google Pixel 4a 128G",
+      "normalPrice": 31.02,
+      "salePrice": 20.68
+    }
+  ]

@@ -1,10 +1,19 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Header } from './components/index'
-import HomePage from './Features/Home/index'
+import { Header } from '../components/index'
+import HomePage from '../components/Features/Home'
+import { Product } from '../type/type'
+export const getStaticProps = async () => {
+  const res = await fetch("https://6336ba535327df4c43c81ae6.mockapi.io/users");
+  const products = await res.json();
 
-const Home: NextPage = () => {
+  return {
+    props: { products },
+  };
+};
+const Home: NextPage<{products: Product[]}> = ({products}) => {
+
   return (
     <>
       <Head>
@@ -13,7 +22,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-      <HomePage/>
+      <HomePage products={products}/>
     </>
   )
 }

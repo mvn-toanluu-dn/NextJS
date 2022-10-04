@@ -75,33 +75,32 @@
     .owl-theme .owl-stage .owl-item.active > .background-slider {
       animation: fadeIn ease 1s;
     }
-    .owl-theme .owl-stage .owl-item.active .bg1 .title > .main-title{
+    .owl-theme .owl-stage .owl-item.active .bg1 .title > .main-title {
       animation: zoomOut ease 2s;
     }
     .owl-theme .owl-stage .owl-item.active .bg1 .title > .sub-title {
       animation: slideInDown ease 1s;
     }
-    .owl-theme .owl-stage .owl-item.active .bg1 .title > .btn-title{
+    .owl-theme .owl-stage .owl-item.active .bg1 .title > .btn-title {
       animation: slideInUp ease 2s;
     }
-    .owl-theme .owl-stage .owl-item.active .bg2 .title > .main-title{
+    .owl-theme .owl-stage .owl-item.active .bg2 .title > .main-title {
       animation: slideInUp ease 2s;
     }
     .owl-theme .owl-stage .owl-item.active .bg2 .title > .sub-title {
       animation: slideInUp ease 1s;
     }
-    .owl-theme .owl-stage .owl-item.active .bg2  .title> .btn-title{
+    .owl-theme .owl-stage .owl-item.active .bg2 .title > .btn-title {
       animation: slideInUp ease 2s;
     }
-    .owl-theme .owl-stage .owl-item.active .bg3 .title > .main-title{
+    .owl-theme .owl-stage .owl-item.active .bg3 .title > .main-title {
       animation: zoomIn ease 2s;
-      
     }
     .owl-theme .owl-stage .owl-item.active .bg3 .title > .sub-title {
       animation: zoomIn ease 1s;
       // animation-delay: 0.9s;
     }
-    .owl-theme .owl-stage .owl-item.active .bg3 .title> .btn-title{
+    .owl-theme .owl-stage .owl-item.active .bg3 .title > .btn-title {
       animation: zoomIn ease 3s;
       // animation-delay: 1.5s;
     }
@@ -129,6 +128,7 @@
     }
     &-title {
       @include pxRem(font-size, 19);
+      font-weight: map-get($font-weight, medium);
       color: map-get($colors, black);
     }
     &-content {
@@ -142,7 +142,11 @@
       height: 16px;
     }
   }
-  // @keyframes zoomOut {
-    
-  // }
+  .section-popular {
+    @include pxRem(padding-top, 150);
+    background-color: #f5f5f7;
+    .old-price {
+      text-decoration: line-through;
+    }
+  }
 }
