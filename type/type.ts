@@ -5,3 +5,9 @@ export type Product = {
     normalPrice: number,
     salePrice?: number,
 }
+export type Service = {
+    src: string,
+    title: string,
+    content: string,
+    more: string,
+}
