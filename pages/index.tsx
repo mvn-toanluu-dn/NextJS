@@ -7,8 +7,9 @@ import dynamic from "next/dynamic";
 import "animate.css";
 import ServiceItem from "../components/modules/ServiceItem";
 import ProductItem from "../components/modules/ProductItem";
-import {services} from "../data/data";
+import { services, slider } from "../data/data";
 import { Product } from "../type/type";
+import SlideItem from "../components/modules/SlideItem";
 export const getStaticProps = async () => {
   const res = await fetch("https://6336ba535327df4c43c81ae6.mockapi.io/users");
   const products = await res.json();
@@ -32,57 +33,35 @@ const Home: NextPage<{ products: Product[] }> = ({ products }) => {
       </Head>
       <Header />
       <div className="page-home">
-      <section className="section-intro">
-        <OwlCarousel className="owl-theme" loop margin={10} items={1}>
-          <div className="background-slider bg1">
-            <div className="title">
-              <h6 className="sub-title">Studeon Innovative & Succesful</h6>
-              <h2 className="main-title">ONLINE COURSES</h2>
-              <button className="btn btn-title">MORE COURSES</button>
-            </div>
+        <section className="section-intro">
+          <OwlCarousel className="owl-theme" loop margin={10} items={1}>
+              {slider.map(slide =>(
+                <SlideItem key={slide.id} slide={slide}   />
+              ))}
+          </OwlCarousel>
+        </section>
+        <section className="section-service">
+          <div className="container">
+            <h6 className="section-sub-title">What We Do</h6>
+            <h2 className="section-title">Unlimited Possibilities</h2>
+            <ul className="service-list flex">
+              {services.map((service, index) => (
+                <ServiceItem service={service} key={index} />
+              ))}
+            </ul>
           </div>
-          <div
-            className="background-slider bg2"
-          >
-            <div className="title">
-              <h6 className="sub-title">Studeon Innovative & Succesful</h6>
-              <h2 className="main-title">ONLINE COURSES</h2>
-              <button className="btn btn-title">MORE COURSES</button>
-            </div>
+        </section>
+        <section className="section-popular">
+          <div className="container">
+            <h6 className="section-sub-title">The Best Choice</h6>
+            <h2 className="section-title">Popular Courses</h2>
+            <ul className="product-list">
+              {products.map((product, index) => {
+                return <ProductItem product={product} key={index} />;
+              })}
+            </ul>
           </div>
-          <div className="background-slider  bg3">
-            <div className="title">
-              <h6 className="sub-title">Studeon Innovative & Succesful</h6>
-              <h2 className="main-title">ONLINE COURSES</h2>
-              <button className="btn btn-title">MORE COURSES</button>
-            </div>
-          </div>
-        </OwlCarousel>
-      </section>
-      <section className="section-service">
-      <div className="container">
-        <h6 className="section-sub-title">What We Do</h6>
-        <h2 className="section-title">Unlimited Possibilities</h2>
-        <ul className="service-list flex">
-            {services.map((service, index) => (
-          <ServiceItem service={service} key={index} />
-            ))}
-        </ul>
-      </div>
-    </section>
-    <section className="section-popular">
-      <div className="container">
-        <h6 className="section-sub-title">The Best Choice</h6>
-        <h2 className="section-title">Popular Courses</h2>
-        <ul className="product-list">
-          {products.map((product, index) => {
-            return (
-              <ProductItem product={product} key={index} />
-            );
-          })}
-        </ul>
-      </div>
-    </section>
+        </section>
       </div>
     </>
   );

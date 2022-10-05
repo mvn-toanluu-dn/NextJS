@@ -11,3 +11,10 @@ export type Service = {
     content: string,
     more: string,
 }
+export type Slide = {
+    id:number,
+    className:string,
+    subtitle: string,
+    maintitle: string,
+    btntitle: string,
+}
