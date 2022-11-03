@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 import { Product } from "../../type/type";
 
@@ -13,7 +14,7 @@ export const getStaticPaths = async () => {
     })
   return {
     paths,
-    fallback: false, // can also be true or 'blocking'
+    fallback: true,
   };
 };
 
@@ -27,7 +28,13 @@ export const getStaticProps = async({params} : any ) => {
   };
 };
 const ProductDetail = ({data} :{data: Product}) => {
-    console.log(data);
+  const router = useRouter()
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   return <>
   <h3 className="detail-title">Product Detail</h3>
   <div className="product-detail-item">
@@ -40,7 +47,7 @@ const ProductDetail = ({data} :{data: Product}) => {
     £&nbsp;{data.normalPrice}
     </span>
     {data.salePrice && (
-        <span className="product-detail-sale">£&nbsp;{data.salePrice}</span>
+        <span className="product-detail-sale"> - £&nbsp;{data.salePrice}</span>
     )}
     </div>
     

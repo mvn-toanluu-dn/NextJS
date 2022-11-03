@@ -1,5 +1,9 @@
 import { Images } from "../assets/images";
-export const services = [
+import { Service } from "../type/type";
+import Diploma from "../components/svg/diploma";
+import Electric from "../components/svg/electric";
+
+export const services:Service[] = [
   {
     src: Images.apple,
     title: "Online Courses",
@@ -48,3 +52,38 @@ export const slider = [
 
   }
 ];
+
+export const countup = [
+  {
+
+    countNumber: 2563,
+    title: "LEARNERS EDUCATED",
+  },
+  {
+    countNumber: 52356,
+    title: "GRADUATES",
+  },
+  {
+    countNumber: 684,
+    title: "COURCES PUBLISHED",
+  },
+  {
+    countNumber: 9584,
+    title: "GLOBAL LEARNERS",
+  },
+]
+
+export const features = [
+  {
+    src: Diploma,
+    title: "Professional Degree",
+    content: "Professional degrees are degrees recognized by the US Department of Education as necessary for subsequent licensing.",
+    button: "MORE INFORMATION",
+  },
+  {
+    src: Electric,
+    title: "The Best Online Courses",
+    content: "Find Courses and Specializations from top universities like Yale, Michigan, Stanford, and leading companies like Google and IBM.",
+    button: "MORE INFORMATION",
+  }
+]

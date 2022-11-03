@@ -6,16 +6,21 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import dynamic from "next/dynamic";
 import "animate.css";
 import ServiceItem from "../components/modules/ServiceItem";
-import ProductItem from "../components/modules/ProductItem";
-import { services, slider } from "../data/data";
-import { Product } from "../type/type";
+import { services, slider, countup, features } from "../data/data";
+import { Popular, Product, CountUp } from "../type/type";
 import SlideItem from "../components/modules/SlideItem";
+import PopularItem from "../components/modules/PopularItem";
+import CountUpItem from "../components/modules/CountUp";
+import { FaRegPaperPlane } from "react-icons/fa";
+import FeaturesItem from "../components/Features_Item";
 export const getStaticProps = async () => {
-  const res = await fetch("https://6336ba535327df4c43c81ae6.mockapi.io/users");
-  const products = await res.json();
+  const res = await fetch(
+    "https://6336ba535327df4c43c81ae6.mockapi.io/popular"
+  );
+  const populars = await res.json();
 
   return {
-    props: { products },
+    props: { populars },
   };
 };
 
@@ -23,7 +28,7 @@ const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
 });
 
-const Home: NextPage<{ products: Product[] }> = ({ products }) => {
+const Home: NextPage<{ populars: Popular[] }> = ({ populars }) => {
   return (
     <>
       <Head>
@@ -32,12 +37,12 @@ const Home: NextPage<{ products: Product[] }> = ({ products }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className="page-home">
+      <main className="page-home">
         <section className="section-intro">
           <OwlCarousel className="owl-theme" loop margin={10} items={1}>
-              {slider.map(slide =>(
-                <SlideItem key={slide.id} slide={slide}   />
-              ))}
+            {slider.map((slide) => (
+              <SlideItem key={slide.id} slide={slide} />
+            ))}
           </OwlCarousel>
         </section>
         <section className="section-service">
@@ -46,23 +51,96 @@ const Home: NextPage<{ products: Product[] }> = ({ products }) => {
             <h2 className="section-title">Unlimited Possibilities</h2>
             <ul className="service-list flex">
               {services.map((service, index) => (
-                <ServiceItem service={service} key={index} />
+                <ServiceItem {...service} key={index} />
               ))}
             </ul>
           </div>
         </section>
         <section className="section-popular">
           <div className="container">
-            <h6 className="section-sub-title">The Best Choice</h6>
-            <h2 className="section-title">Popular Courses</h2>
-            <ul className="product-list">
-              {products.map((product, index) => {
-                return <ProductItem product={product} key={index} />;
+            <h6 className="popular section-sub-title">The Best Choice</h6>
+            <h2 className="popular section-title">Popular Courses</h2>
+            <ul className="popular-list flex">
+              <OwlCarousel
+                className="owl-theme"
+                items={4}
+                loop={true}
+                nav={true}
+                dotsEach={true}
+              >
+                {populars.map((popular, index) => {
+                  return <PopularItem popular={popular} key={index} />;
+                })}
+              </OwlCarousel>
+            </ul>
+          </div>
+        </section>
+        <section className="section-choice">
+          <div className="choice section-padding">
+            <h6 className="choice-subtitle">The Best Choice</h6>
+            <h2 className="choice-title">Useful &amp; Popular Courses</h2>
+            <ul className="choice-courses flex">
+              {countup.map((countup, index) => {
+                return <CountUpItem {...countup} key={index} />;
               })}
             </ul>
           </div>
         </section>
-      </div>
+        <section className="section-subscribe">
+          <div className="subscribe flex">
+            <h3 className="subscribe-title col-4 vc-column">
+              Want to Receive Fresh News?
+            </h3>
+            <p className="subscribe-content col-4 vc-column">
+              Subscribe to our daily newsletter to stay ahead of the trending
+              cources and updates
+            </p>
+            <a className="subscribe-link flex col-4 vc-column">
+              <div className="item-button">
+                <i className="subscribe-icon">
+                  <FaRegPaperPlane />
+                </i>
+                SUBSCRIBE
+              </div>
+            </a>
+          </div>
+        </section>
+        <section className="section-event section-pad">
+          <h6 className="event section-sub-title">The Best Choice</h6>
+          <h2 className="event section-title">Our Events</h2>
+          <div className="btn-event">
+            <a href="/#" className="btn">
+              MORE EVENTS
+            </a>
+          </div>
+        </section>
+        <section className="section-features">
+          <div className="features flex">
+            <div className="features-img col-6"></div>
+            <div className="features-content col-6">
+              <div className="features-text">
+                <h6 className="features-sub-title section-sub-title">
+                  The Best Choice
+                </h6>
+                <h2 className="features-title section-title">
+                  We Build Future with Education
+                </h2>
+                <p className="features-para">
+                  But I must explain to you how all this mistaken idea of
+                  denouncing pleasure and praising pain was born and I will give
+                  you a complete account of the system, and expound the actual
+                  teachings of the great explore.
+                </p>
+              </div>
+              <ul className="features-list flex">
+                {features.map((item, index) => {
+                  return <FeaturesItem item={item} key={index} />;
+                })}
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
     </>
   );
 };

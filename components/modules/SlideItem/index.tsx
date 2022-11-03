@@ -8,7 +8,9 @@ const SlideItem = ({slide} : {slide :Slide}) => {
       <div className="title">
         <h6 className="sub-title">{slide.subtitle}</h6>
         <h2 className="main-title">{slide.maintitle}</h2>
+        <a href="/#">
         <button className="btn btn-title">{slide.btntitle}</button>
+        </a>
       </div>
     </div>
   );

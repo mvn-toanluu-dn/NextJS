@@ -145,8 +145,325 @@
   .section-popular {
     @include pxRem(padding-top, 150);
     background-color: #f5f5f7;
-    .old-price {
-      text-decoration: line-through;
+    .section-title {
+      margin-top: 0.42em;
+      margin-bottom: 1.6em;
+      padding-bottom: 0.62em;
+    }
+    .popular {
+      &-item {
+        @include pxRem(width, 270);
+        height: 100%;
+        background-color: #fff;
+        position: relative;
+        &:hover > .popular-hover-content,
+        &:hover > .popular-hover-mask {
+          visibility: visible;
+          color: #fff;
+        }
+        &:hover > .popular-hover-content {
+          transform: translateY(-50%);
+          transition: all 0.3s ease-in-out;
+        }
+      }
+      &-image {
+        width: 270px;
+        height: 190px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &-categories {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        color: #fff;
+        background-color: #2ac465;
+        border-radius: 3px;
+        padding: 3px 8px;
+        line-height: 12px;
+        letter-spacing: 1.15px;
+        font-size: 9px;
+        margin: 5px 0 0 11px;
+      }
+      &-info {
+        padding: 2em 1.2em 1em;
+      }
+      &-title {
+        margin: 0 0 0.75em;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1.2em;
+        font-size: 1.143em;
+        line-height: 1.4375em;
+        font-weight: 500;
+      }
+      &-duration {
+        line-height: 1.5em;
+        margin-top: 0.5em;
+        color: #8e8e8e;
+        display: inline-block;
+        max-width: 70%;
+      }
+      &-price {
+        color: map-get($colors, orange);
+        margin-top: 0.3em;
+        font-size: 1.143em;
+        float: right;
+        line-height: 1em;
+      }
+      &-hover {
+        &-content {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          height: inherit;
+          transform: translateY(-75%);
+          padding: 2em;
+          visibility: hidden;
+        }
+        &-text {
+          @include pxRem(margin-top, 30);
+          max-height: 9.2em;
+          overflow: hidden;
+          line-height: 1.6em;
+        }
+        &-mask {
+          background-color: rgba(17, 17, 17, 0.9);
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: inherit;
+          width: inherit;
+          visibility: hidden;
+        }
+        &-more,
+        &-cart {
+          background-color: map-get($colors, orange);
+          border-radius: 3px;
+          color: white;
+          padding: 1.3em 2em 1.065em;
+        }
+        &-icon {
+          @include pxRem(margin-top, 33);
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    .owl-theme .owl-nav {
+      @include pxRem(font-size, 25);
+      font-weight: map-get($font-weight, thin);
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      .owl-next {
+        @include pxRem(margin-right, 30);
+      }
+    }
+    .owl-theme .owl-dots {
+      position: relative;
+      width: fit-content;
+      top: -5%;
+      left: 50%;
+      transform: translateX(-50%);
+      .owl-dot.active span {
+        background-color: #2ac465;
+      }
+    }
+  }
+  .choice {
+    @include pxRem(height, 612);
+    background: url("../../images/bg_choice.jpeg") no-repeat center / cover;
+    &-subtitle {
+      font-size: 1.143em;
+      font-weight: 300;
+      text-transform: none;
+      letter-spacing: 0.6px;
+      line-height: 1.5em;
+      text-align: center;
+      color: #8e8a8a;
+      font-family: "Lora", serif;
+    }
+    &-title {
+      @include pxRem(font-size, 34);
+      margin-top: 0.42em;
+      color: #ffffff;
+      margin-bottom: 1.6em;
+      padding-bottom: 0.62em;
+      position: relative;
+      letter-spacing: -2.6px;
+      line-height: 1.2em;
+      text-align: center;
+      &::after {
+        content: "";
+        background-color: #2ac465;
+        position: absolute;
+        width: 40px;
+        height: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+      }
+    }
+    &-courses {
+      @include pxRem(padding, 0 120 0 120);
+    }
+    &-count-up {
+      flex-direction: column;
+      align-items: center;
+    }
+    &-count-title,
+    &-count-number {
+      color: white;
+    }
+    &-count-number {
+      margin-top: 0.3em;
+      font-weight: 500;
+      font-size: 3.214em;
+      letter-spacing: -1.5px;
+      line-height: 1.1em;
+    }
+    &-count-title {
+      font-size: 0.7857em;
+      font-weight: 600;
+      line-height: 1.25em;
+      letter-spacing: 1.75px;
+      text-transform: uppercase;
+      margin-top: 1.3em;
+    }
+  }
+  .section-subscribe {
+    @include pxRem(padding, 22.5 120 22.5 120);
+    background-color: #f5f5f7;
+    .subscribe {
+      @include pxRem(height, 151);
+      justify-content: space-between;
+      align-items: center;
+      @include pxRem(padding, 0 15 0 15);
+      &-content {
+        @include pxRem(font-size, 18.21);
+        color: #7d7d7d;
+        line-height: 1.529em;
+        text-align: center;
+        font-family: Lora;
+        font-weight: 400;
+      }
+      &-link {
+        justify-content: flex-end;
+      }
+      &-icon {
+        margin-right: 0.5em;
+      }
+    }
+  }
+  .section-event {
+    .event.section-title {
+      margin-top: 0.42em;
+      margin-bottom: 1.6em;
+      padding-bottom: 0.62em;
+    }
+    .btn-event {
+      @include pxRem(padding-top, 55);
+      text-align: center;
+      .btn {
+        @include pxRem(padding, 26 43);
+        @include pxRem(border-radius, 3);
+      }
+    }
+  }
+  .section-features {
+    .features {
+      &-img {
+        background: url("https://studeon.web4s.vn/wp-content/uploads/2017/02/video_bg.jpg?id=560")
+          no-repeat;
+          background-size: 173%;
+          background-position-x: center;
+      }
+      &-content {
+        background-color: #f5f5f7;
+      }
+      &-text {
+        @include pxRem(padding-top, 169);
+        margin: 0 7em;
+      }
+      &-sub-title {
+        font-family: "Lora", sans-serif;
+        font-weight: 300;
+        line-height: 1.5em;
+      }
+      &-title {
+        font-size: 34px;
+        margin-top: 0.42em;
+        margin-bottom: 1.6em;
+        padding-bottom: 0.62em;
+        letter-spacing: -2.6px;
+        &::after {
+          left: 0;
+          transform: translate(0);
+        }
+      }
+      &-title,
+      &-sub-title {
+        text-align: left;
+      }
+      &-para {
+        @include pxRem(font-size, 15);
+        line-height: 1.9em;
+        margin-top: -1.3em;
+        color: #595959;
+        font-family: "Raleway", sans-serif;
+        font-weight: 200;
+      }
+      &-list {
+        margin: 2.85em 7em 0;
+      }
+      &-item {
+        @include pxRem(padding, 0 30 30 0);
+        &:hover > .features-item-img svg {
+          fill: #111;
+          transition: all 0.3s ease;
+        }
+      }
+      &-item-info {
+        @include pxRem(margin-left, 30);
+      }
+      &-item-img {
+        @include pxRem(height, 60);
+        width: 90%;
+        color: map-get($colors, orange);
+        svg {
+          fill: map-get($colors, orange);
+        }
+      }
+      &-item-title {
+        @include pxRem(font-size, 19);
+        a:hover {
+          color: map-get($colors, orange);
+        }
+      }
+      &-item-content {
+        @include pxRem(margin-top, 15);
+        @include pxRem(font-size, 15);
+        @include pxRem(letter-spacing, -0.03);
+        color: #595959;
+        font-family: "Raleway", sans-serif;
+        font-weight: 100;
+        line-height: 30px;
+      }
+      &-item-button {
+        @include pxRem(margin-top, 15);
+        font-size: 0.7857em;
+        a {
+          color: #8e8e8e;
+          font-weight: 500;
+          &:hover {
+            color: map-get($colors, orange);
+          }
+        }
+      }
     }
   }
 }

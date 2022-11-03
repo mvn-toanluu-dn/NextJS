@@ -7,14 +7,15 @@ export const getStaticProps = async () => {
     const res = await fetch("https://6336ba535327df4c43c81ae6.mockapi.io/users")
     const products = await res.json();
     return { 
-        props: {products}
+        props: {products},
+        revalidate: 10,
     }
 }
 // export const getStaticPaths = async () => {
 //     const res = await fetch("https://6336ba535327df4c43c81ae6.mockapi.io/users");
 //     const products = await res.json();
 
-//     const paths = products.map(product => {
+//     const paths = products.map((product:Product) => {
 //         return {
 //             params: {id: product.id.toString() }
 //         }

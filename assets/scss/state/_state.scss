@@ -18,8 +18,8 @@
   position: relative;
   color: map-get($colors, section-title);
   &::after {
-    content: '';
-    background-color: map-get($colors, green );
+    content: "";
+    background-color: map-get($colors, green);
     position: absolute;
     width: 40px;
     height: 1px;
@@ -31,4 +31,25 @@
 .section-sub-title,
 .section-title {
   text-align: center;
+}
+.section-padding {
+  @include pxRem(padding, 150 0);
+}
+.section-pad {
+  @include pxRem(padding, 130 0);
+}
+.vc-row {
+  @include pxRem(margin, 0 -15 0 -15);
+}
+h3 {
+  font-size: 1.429em;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.55em;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: -0.3px;
+}
+.vc-column {
+  @include pxRem(padding, 0 15 0 15);
 }
